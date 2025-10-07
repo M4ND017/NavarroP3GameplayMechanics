@@ -21,11 +21,11 @@ public class SpawnManager : MonoBehaviour
         enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length;
        
         if (enemyCount == 0)
-        {
-             Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+        {  
             waveNumber++;
             SpawnEnemyWave(waveNumber);
-           
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+
         }
         
     }

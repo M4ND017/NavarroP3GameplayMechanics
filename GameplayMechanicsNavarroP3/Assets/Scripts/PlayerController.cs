@@ -19,8 +19,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float forwardInput = Input.GetAxis("Verticle");
-        playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+        float forwardInput = Input.GetAxis("Vertical");
+
+        playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
+
         powerupIndicator.transform.position = transform.position + new Vector3(0, 0.5f, 0);
     }
 
