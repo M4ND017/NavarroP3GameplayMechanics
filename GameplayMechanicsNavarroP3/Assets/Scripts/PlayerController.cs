@@ -9,11 +9,12 @@ public class PlayerController : MonoBehaviour
     private float powerupStrength = 15.0f;
     private GameObject focalPoint;
     private Rigidbody playerRb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        focalPoint = GameObject.Find("FocalPoint");
+        focalPoint = GameObject.Find("Focal Point");
     }
 
     // Update is called once per frame
@@ -31,9 +32,10 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Powerup"))
         {
             hasPowerup = true;
-            powerupIndicator.gameObject.SetActive(true);
+           
             Destroy(other.gameObject);
             StartCoroutine(PowerupCountdownRoutine());
+            powerupIndicator.gameObject.SetActive(true);
         }
     }
 
