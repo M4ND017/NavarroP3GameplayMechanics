@@ -21,8 +21,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float forwardInput = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
 
-        playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
+        Vector3 moveDirection =
+            focalPoint.transform.forward * forwardInput +
+            focalPoint.transform.right * horizontalInput;
+
+        playerRb.AddForce(moveDirection * speed);
 
         powerupIndicator.transform.position = transform.position + new Vector3(0, 0.5f, 0);
     }

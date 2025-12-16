@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
-    private Rigidbody enemyrb;
-    private GameObject Player;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float speed = 5.0f;
+    private Rigidbody enemyRb;
+    private GameObject player;
+
     void Start()
     {
-        enemyrb = GetComponent<Rigidbody>();
-        Player = GameObject.Find("Player");
+        enemyRb = GetComponent<Rigidbody>();
+        player = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 lookDirection = (Player.transform.position - transform.forward).normalized;
-        enemyrb.AddForce((lookDirection * speed));
-        if(transform.position.y < -10)
+        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
+        enemyRb.AddForce(lookDirection * speed);
+
+        if (transform.position.y < -10)
         {
             Destroy(gameObject);
         }
